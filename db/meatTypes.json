@@ -10,5 +10,8 @@
   },
   "type4" : {
     "name" : "Lamb"
+  },
+  "type5": {
+    "name" : "Duck"
   }
 }
