@@ -1,0 +1,42 @@
+{
+  "favMeats1" :{
+    "uid": "",
+    "meatId": "meat7" 
+  },
+  "favMeats2" :{
+    "uid": "",
+    "meatId": "meat14" 
+  },
+  "favMeats3" :{
+    "uid": "",
+    "meatId": "meat27" 
+  },
+  "favMeats4" :{
+    "uid": "",
+    "meatId": "meat24" 
+  },
+  "favMeats5" :{
+    "uid": "",
+    "meatId": "meat23" 
+  },
+  "favMeats6" :{
+    "uid": "",
+    "meatId": "meat21" 
+  },
+  "favMeats7" :{
+    "uid": "",
+    "meatId": "meat20" 
+  },
+  "favMeats8" :{
+    "uid": "",
+    "meatId": "meat17" 
+  },
+  "favMeats9" :{
+    "uid": "",
+    "meatId": "meat16" 
+  },
+  "favMeats10" :{
+    "uid": "",
+    "meatId": "meat15" 
+  }
+}
