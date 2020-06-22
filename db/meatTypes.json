@@ -1,0 +1,17 @@
+{
+  "type1" : {
+    "name" : "Beef"
+  },
+  "type2" : {
+    "name" : "Chicken"
+  },
+  "type3" : {
+    "name" : "Pork"
+  },
+  "type4" : {
+    "name" : "Lamb"
+  },
+  "type5": {
+    "name" : "Duck"
+  }
+}
