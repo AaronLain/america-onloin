@@ -17,7 +17,6 @@ class Home extends React.Component {
   getMeats = () => {
     meatData.getAllMeats()
       .then((meats) => {
-        console.error(meats, 'meats')
         this.setState({ meats })
       })
       .catch((err) => console.error('getMeats not getting meats', err));
