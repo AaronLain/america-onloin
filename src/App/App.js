@@ -15,7 +15,7 @@ import TheNavBar from '../components/shared/TheNavBar/TheNavBar';
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
 
-import fbConnection from '../helpers/connection';
+import fbConnection from '../helpers/data/connection';
 
 fbConnection();
 
