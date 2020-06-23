@@ -12,7 +12,8 @@ import {
 import './App.scss';
 
 import TheNavBar from '../components/shared/TheNavBar/TheNavBar';
-import Auth from '../components/pages/Auth';
+import Auth from '../components/pages/Auth/Auth';
+import Home from '../components/pages/Home/Home';
 
 import fbConnection from '../helpers/connection';
 
