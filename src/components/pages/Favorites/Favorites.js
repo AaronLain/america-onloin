@@ -7,9 +7,9 @@ import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
 import MeatCard from '../../shared/MeatCard/MeatCard';
 
-import './Home.scss';
+import './Favorites.scss';
 
-class Home extends React.Component {
+class Favorites extends React.Component {
   state = {
     meats: [],
   }
@@ -33,8 +33,7 @@ class Home extends React.Component {
     ));
     return (
       <div className="container">
-        <h1 className="title">Hello {user}</h1>
-        <h2 className="subtitle">Welcome to your stuff!</h2>
+        <h1 className="title">{user}'s Favorites</h1>
         <div className="d-flex flex-wrap">
           {buildMeatCards}
         </div>
@@ -43,4 +42,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Favorites;
