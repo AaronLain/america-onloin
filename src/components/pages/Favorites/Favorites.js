@@ -1,4 +1,3 @@
-
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -16,7 +15,7 @@ class Favorites extends React.Component {
 
   getMeats = () => {
     const uid = authData.getUid();
-    meatData.getFavMeatsByUid(uid)
+    meatData.getMeatsByUid(uid)
       .then((meats) => this.setState({ meats }))
       .catch((err) => console.error(err));
   }
@@ -28,8 +27,8 @@ class Favorites extends React.Component {
   render() {
     const user = firebase.auth().currentUser.displayName;
     const { meats } = this.state;
-    const buildMeatCards = meats.map((item) => (
-      <MeatCard key={item.id} item={item} removeItem={this.removeItem}/>
+    const buildMeatCards = meats.map((meat) => (
+      <MeatCard key={meat.id} meat={meat} removeItem={this.removeItem}/>
     ));
     return (
       <div className="container">

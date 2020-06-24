@@ -15,6 +15,7 @@ import TheNavBar from '../components/shared/TheNavBar/TheNavBar';
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
 import Favorites from '../components/pages/Favorites/Favorites';
+import NewMeat from '../components/shared/NewMeat/NewMeat';
 
 import fbConnection from '../helpers/data/connection';
 
@@ -65,6 +66,7 @@ class App extends React.Component {
                 <Switch>
                   <PrivateRoute path='/home' component={Home} authed={authed} />
                   <PrivateRoute path='/favorites' component={Favorites} authed={authed} />
+                  <PrivateRoute path='/newmeat' component={NewMeat} authed={authed} />
                   {/*<PrivateRoute path='/edit/:itemId' component={Edit} authed={authed} />
                   <PrivateRoute path='/items/:itemId' component={SingleThing} authed={authed} /> */}
                   <PublicRoute path='/auth' component={Auth} authed={authed} />;
