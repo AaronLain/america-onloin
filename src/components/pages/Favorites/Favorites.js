@@ -1,4 +1,3 @@
-
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -7,16 +6,16 @@ import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
 import MeatCard from '../../shared/MeatCard/MeatCard';
 
-import './Home.scss';
+import './Favorites.scss';
 
-class Home extends React.Component {
+class Favorites extends React.Component {
   state = {
     meats: [],
   }
 
   getMeats = () => {
     const uid = authData.getUid();
-    meatData.getFavMeatsByUid(uid)
+    meatData.getMeatsByUid(uid)
       .then((meats) => this.setState({ meats }))
       .catch((err) => console.error(err));
   }
@@ -28,13 +27,12 @@ class Home extends React.Component {
   render() {
     const user = firebase.auth().currentUser.displayName;
     const { meats } = this.state;
-    const buildMeatCards = meats.map((item) => (
-      <MeatCard key={item.id} item={item} removeItem={this.removeItem}/>
+    const buildMeatCards = meats.map((meat) => (
+      <MeatCard key={meat.id} meat={meat} removeItem={this.removeItem}/>
     ));
     return (
       <div className="container">
-        <h1 className="title">Hello {user}</h1>
-        <h2 className="subtitle">Welcome to your stuff!</h2>
+        <h1 className="title">{user}'s Favorites</h1>
         <div className="d-flex flex-wrap">
           {buildMeatCards}
         </div>
@@ -43,4 +41,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Favorites;

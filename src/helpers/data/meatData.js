@@ -3,7 +3,7 @@ import firebaseConfig from '../apiKeys.json'
 
 const baseUrl = firebaseConfig.firebaseKeys.databaseURL;
 
-const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
+const getMeatsByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/meats.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const responseMeats = response.data;
@@ -15,9 +15,24 @@ const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
         });
       }
       resolve(meats);
-      
     }).catch((err) => reject(err));
 });
+
+const getFavMeats = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/favorites.json`)
+    .then((response) => {
+      const responseMeats = response.data;
+      const favMeats = [];
+      if (responseMeats) {
+        Object.keys(responseMeats).forEach((meatId) => {
+          responseMeats[meatId].id = meatId;
+          favMeats.push(responseMeats[meatId]);
+        });
+      }
+      resolve(favMeats);
+    }).catch((err) => reject(err));
+});
+
 
 const getAllMeats = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/meats.json`)
@@ -44,7 +59,8 @@ const postMeat = (newMeat) => axios.post(`${baseUrl}/meats.json`, newMeat);
 const updateMeat = (meatId, updatedMeat) => axios.put(`${baseUrl}/meats/${meatId}.json`, updatedMeat);
 
 export default {
-  getFavMeatsByUid,
+  getMeatsByUid,
+  getFavMeats,
   getAllMeats,
   getSingleMeat,
   deleteMeat,

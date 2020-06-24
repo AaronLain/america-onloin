@@ -49,6 +49,9 @@ class TheNavBar extends React.Component {
               <NavLink tag={RRNavLink} to='/favorites'>Favorites</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink tag={RRNavLink} to='/newmeat'>New Meat</NavLink>
+            </NavItem>
+            <NavItem>
               <button className="btn btn-danger" onClick={this.logOut}>Logout</button>
             </NavItem>
           </Nav>
