@@ -25,6 +25,7 @@ class NewMeat extends React.Component {
     meatExpDate: '',
     meatType: '',
   }
+
   saveMeat = (e) => {
     const {
       meatName,
@@ -42,7 +43,7 @@ class NewMeat extends React.Component {
     }
 
     meatData.postMeat(newMeat)
-      .then(() => this.props.history.push('/home'))
+      .then(() => this.props.history.push('/home')) //returns to home after post is complete
       .catch((err) => console.error('could not save meat', err));
   }
 
