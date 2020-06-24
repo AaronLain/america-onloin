@@ -17,6 +17,7 @@ import {
 class NewMeat extends React.Component {
   state = {
     modal: false,
+    meatName: '',
   }
 
   toggle = () => {
@@ -24,7 +25,10 @@ class NewMeat extends React.Component {
   }
 
   render() {
-    const { modal } = this.state;
+    const {
+      modal,
+      meatName
+    } = this.state;
     return (
       <Container>
         <Row>
@@ -42,7 +46,7 @@ class NewMeat extends React.Component {
                       name="name"
                       id="meatName"
                       placeholder="Meat name goes here"
-                      // value={}
+                      value={meatName}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -57,31 +61,31 @@ class NewMeat extends React.Component {
                   <legend>Select Meat Type</legend>
                   <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="type1" id="type1"/>{' '}
+                    <Input type="radio" name="radio1" id="type1"/>{' '}
                     Beef
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="type2" id="type2" />{' '}
+                    <Input type="radio" name="radio1" id="type2" />{' '}
                     Chicken
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="type3" id="type3" />{' '}
+                    <Input type="radio" name="radio1" id="type3" />{' '}
                     Pork
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="type4" id="type4" />{' '}
+                    <Input type="radio" name="radio1" id="type4" />{' '}
                     Lamb
                   </Label>
-                      </FormGroup>
-                      <FormGroup check>
+                </FormGroup>
+                <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="type5" id="type5" />{' '}
+                    <Input type="radio" name="radio1" id="type5" />{' '}
                     Duck
                   </Label>
                 </FormGroup>
