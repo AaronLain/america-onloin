@@ -14,6 +14,9 @@ import {
   Input,
 } from 'reactstrap';
 
+import authData from '../../../helpers/data/authData';
+import meatData from '../../../helpers/data/meatData';
+
 class NewMeat extends React.Component {
   state = {
     modal: false,
@@ -21,6 +24,24 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
+  }
+  saveMeat = (e) => {
+    const {
+      meatName,
+      meatPhoto,
+      meatExpDate,
+      meatType,
+    } = this.state;
+    const newMeat = {
+      name: meatName,
+      photoUrl: meatPhoto,
+      expDate: meatExpDate,
+      meatType,
+      uid: authData.getUid(),
+    }
+    meatData.postMeat(newMeat)
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error('could not save meat', err));
   }
 
   nameChange = (e) => {
@@ -104,8 +125,8 @@ class NewMeat extends React.Component {
                       type="radio"
                       name="radio1"
                       value="type1"
-                      // checked={meatType}
-                      // onChange={() => this.meatTypeChange}
+                      checked={meatType === 'type1'}
+                      onChange={this.meatTypeChange}
                     />Beef
                   </Label>
                 </FormGroup>
@@ -115,8 +136,8 @@ class NewMeat extends React.Component {
                     type="radio"
                     name="radio1"
                     value="type2"
-                    // checked={meatType}
-                    // onChange={() => this.meatTypeChange}
+                    checked={meatType === 'type2'}
+                    onChange={this.meatTypeChange}
                     />Chicken
                   </Label>
                 </FormGroup>
@@ -126,8 +147,8 @@ class NewMeat extends React.Component {
                     type="radio"
                     name="radio1"
                     value="type3" 
-                    // checked={meatType}
-                    // onChange={() => this.meatTypeChange}
+                    checked={meatType === 'type3'}
+                    onChange={this.meatTypeChange}
                     />Pork
                   </Label>
                 </FormGroup>
@@ -137,8 +158,8 @@ class NewMeat extends React.Component {
                       type="radio"
                       name="radio1"  
                       value="type4"
-                      // checked={meatType}
-                      // onChange={() => this.meatTypeChange}    
+                      checked={meatType === 'type4'}
+                      onChange={this.meatTypeChange}    
                     />Lamb
                   </Label>
                 </FormGroup>
@@ -148,8 +169,8 @@ class NewMeat extends React.Component {
                       type="radio"
                       name="radio1"  
                       value="type5"
-                      // checked={meatType}
-                      // onChange={() => this.meatTypeChange}     
+                      checked={meatType === 'type5'}
+                      onChange={this.meatTypeChange}    
                     />Duck
                   </Label>
                 </FormGroup>
@@ -157,7 +178,7 @@ class NewMeat extends React.Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+            <Button color="primary" onClick={this.saveMeat}>Submit</Button>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
           </Modal>
