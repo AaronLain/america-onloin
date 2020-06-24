@@ -40,7 +40,7 @@ class NewMeat extends React.Component {
       meatType,
       uid: authData.getUid(),
     }
-    
+
     meatData.postMeat(newMeat)
       .then(() => this.props.history.push('/home'))
       .catch((err) => console.error('could not save meat', err));
@@ -77,6 +77,7 @@ class NewMeat extends React.Component {
       meatExpDate,
       meatType,
     } = this.state;
+    
     return (
       <Container>
         <Row>
