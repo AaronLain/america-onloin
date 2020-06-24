@@ -18,6 +18,28 @@ class NewMeat extends React.Component {
   state = {
     modal: false,
     meatName: '',
+    meatPhoto: '',
+    meatExpDate: '',
+    meatType: '',
+  }
+
+  nameChange = (e) => {
+    e.preventDefault();
+    this.setState({ meatName: e.target.value });
+  }
+
+  photoChange = (e) => {
+    e.preventDefault();
+    this.setState({ meatPhoto: e.target.value });
+  }
+
+  expDateChange = (e) => {
+    e.preventDefault();
+    this.setState({ meatExpDate: e.target.value });
+  }
+
+  meatTypeChange = (e) => {
+    this.setState({ meatType: e.target.value }) 
   }
 
   toggle = () => {
@@ -27,7 +49,10 @@ class NewMeat extends React.Component {
   render() {
     const {
       modal,
-      meatName
+      meatName,
+      meatPhoto,
+      meatExpDate,
+      meatType,
     } = this.state;
     return (
       <Container>
@@ -47,46 +72,85 @@ class NewMeat extends React.Component {
                       id="meatName"
                       placeholder="Meat name goes here"
                       value={meatName}
+                      onChange={this.nameChange}
                     />
                 </FormGroup>
                 <FormGroup>
                   <Label for="photoUrl">Photo Url</Label>
-                  <Input type="text" name="photoUrl" id="photoUrl" placeholder="Meat pic url goes here" />
+                    <Input type="text"
+                      name="photoUrl"
+                      id="photoUrl"
+                      placeholder="Meat pic url goes here"
+                      value={meatPhoto}
+                      onChange={this.photoChange}
+                    />
                 </FormGroup>
                 <FormGroup>
                   <Label for="expDate">Expiration Date</Label>
-                  <Input type="text" name="expDate" id="expDate" placeholder="Expiration date goes here" />
+                    <Input
+                      type="text"
+                      name="expDate"
+                      id="expDate"
+                      placeholder="Expiration date goes here"
+                      value={meatExpDate}
+                      onChange={this.expDateChange}
+                    />
                 </FormGroup>
                 <FormGroup tag="fieldset">
                   <legend>Select Meat Type</legend>
                   <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" id="type1"/>{' '}
-                    Beef
+                    <Input
+                      type="radio"
+                      name="radio1"
+                      value="type1"
+                      // checked={meatType}
+                      // onChange={() => this.meatTypeChange}
+                    />Beef
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" id="type2" />{' '}
-                    Chicken
+                    <Input
+                    type="radio"
+                    name="radio1"
+                    value="type2"
+                    // checked={meatType}
+                    // onChange={() => this.meatTypeChange}
+                    />Chicken
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" id="type3" />{' '}
-                    Pork
+                    <Input
+                    type="radio"
+                    name="radio1"
+                    value="type3" 
+                    // checked={meatType}
+                    // onChange={() => this.meatTypeChange}
+                    />Pork
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" id="type4" />{' '}
-                    Lamb
+                    <Input 
+                      type="radio"
+                      name="radio1"  
+                      value="type4"
+                      // checked={meatType}
+                      // onChange={() => this.meatTypeChange}    
+                    />Lamb
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" id="type5" />{' '}
-                    Duck
+                    <Input
+                      type="radio"
+                      name="radio1"  
+                      value="type5"
+                      // checked={meatType}
+                      // onChange={() => this.meatTypeChange}     
+                    />Duck
                   </Label>
                 </FormGroup>
               </FormGroup>
