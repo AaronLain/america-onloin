@@ -12,7 +12,7 @@ class MeatCard extends React.Component {
   // }
 
   render() {
-    const { meat } = this.props;
+    const { meat, removeMeat } = this.props;
     // const singleLink = `/Meats/${Meat.id}`;
     return (
       <div className="MeatCard col-3">
@@ -21,7 +21,7 @@ class MeatCard extends React.Component {
             <img src={meat.photoUrl} alt="" className="card-img-top" />
             <h5 className="card-title">{meat.name}</h5>
             {/* <Link className="btn btn-info" to={singleLink}>Single View</Link> */}
-            {/* <button className="btn btn-danger" onClick={() => removeMeat(meat.id)}>Delete!</button> */}
+            <button className="btn btn-danger" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
             <p className="card-text">{meat.quantity}</p>
           </div>
         </div>
