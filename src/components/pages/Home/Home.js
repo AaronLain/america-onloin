@@ -22,6 +22,12 @@ class Home extends React.Component {
       .catch((err) => console.error('getMeats not getting meats', err));
   }
 
+  removeMeat = (meatId) => {
+    meatData.deleteMeat(meatId)
+      .then(() => this.getMeats())   //after deleting, get the collection from the database
+      .catch((err) => console.error('could not remove meat', err))
+  }
+
   componentDidMount() {
     this.getMeats();
   }
@@ -30,7 +36,7 @@ class Home extends React.Component {
     const user = firebase.auth().currentUser.displayName;
     const { meats } = this.state;
     const buildMeatCards = meats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} />
+      <MeatCard key={meat.id} meat={meat} removeMeat={this.removeMeat}/>
     ))
     return (
       <div className="container">
