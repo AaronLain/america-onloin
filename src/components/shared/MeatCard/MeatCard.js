@@ -44,8 +44,10 @@ class MeatCard extends React.Component {
         <div className={this.meatCardColorSort(meat.meatTypeId)}>
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
-          <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
-          <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
+          <div>
+            <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
+            <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
+          </div>
           <p className="card-text">{meatType}</p>
         </div>
       </div>
