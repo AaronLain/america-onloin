@@ -46,13 +46,18 @@ class Home extends React.Component {
     const user = firebase.auth().currentUser.displayName;
     const { meats, meatTypes } = this.state;
 
-    const getMeatTypeName = (meatTypeId) => {
-      const thisMeatType = meatTypes.find((meatType) => meatType.id === meatTypeId)
+    const getMeatTypeName = (meatTypeId) => {  //finds the meatType.name based on the meatTypeId
+      const thisMeatType = meatTypes.find((meatType) => meatType.id === meatTypeId) 
       if (thisMeatType) return thisMeatType.name;   //without if statement, app crashes upon reload
     }
 
     const buildMeatCards = meats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} meatType={getMeatTypeName(meat.meatTypeId)} removeMeat={this.removeMeat} />
+      <MeatCard
+        key={meat.id}
+        meat={meat}
+        meatType={getMeatTypeName(meat.meatTypeId)}
+        removeMeat={this.removeMeat}
+      />
     ));
   
     return (
