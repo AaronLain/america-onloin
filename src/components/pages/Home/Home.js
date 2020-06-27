@@ -45,10 +45,10 @@ class Home extends React.Component {
   render() {
     const user = firebase.auth().currentUser.displayName;
     const { meats, meatTypes } = this.state;
-    
+
     const getMeatTypeName = (meatTypeId) => {
       const thisMeatType = meatTypes.find((meatType) => meatType.id === meatTypeId)
-      return thisMeatType.name;
+      if (thisMeatType) return thisMeatType.name;   //without if statement, app crashes upon reload
     }
 
     const buildMeatCards = meats.map((meat) => (

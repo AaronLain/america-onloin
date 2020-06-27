@@ -24,6 +24,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
+    raffleUid: '',
   }
 
   saveMeat = (e) => {
@@ -32,13 +33,15 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      raffleUid,
     } = this.state;
 
     const newMeat = {
       name: meatName,
       photoUrl: meatPhoto,
       expDate: meatExpDate,
-      meatType,
+      meatTypeId: meatType,
+      raffleUid,
       uid: authData.getUid(),
     }
 
