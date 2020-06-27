@@ -40,15 +40,13 @@ class MeatCard extends React.Component {
     const singleLink = `/Edit/${meat.id}`;
     
     return (
-      <div className="MeatCard col-3">
-        <div className="card">
+      <div className="meatcard col-md-3 col-sm-12">
         <div className={this.meatCardColorSort(meat.meatTypeId)}>
-            <img src={meat.photoUrl} alt="" className="card-img-top" />
-            <h5 className="card-title">{meat.name}</h5>
-            <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
-            <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
-            <p className="card-text">{meatType}</p>
-          </div>
+          <img src={meat.photoUrl} alt="" className="card-img-top" />
+          <h5 className="card-title">{meat.name}</h5>
+          <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
+          <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
+          <p className="card-text">{meatType}</p>
         </div>
       </div>
     );
