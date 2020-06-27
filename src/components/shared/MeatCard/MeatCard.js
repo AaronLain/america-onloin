@@ -41,7 +41,7 @@ class MeatCard extends React.Component {
     
     return (
       <div className="meatcard col-md-3 col-sm-12">
-        <div className={this.meatCardColorSort(meat.meatTypeId)}>
+        <div className={this.meatCardColorSort(meat.meatTypeId)}> {} {/* sets the color of the card based on the TYPE of protein it is*/}
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
           <div>
