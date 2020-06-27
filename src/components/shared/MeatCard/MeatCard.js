@@ -1,15 +1,15 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// import MeatShape from '../../../helpers/propz/MeatShape';
+import MeatShape from '../../../helpers/propz/MeatShape';
 import './MeatCard.scss';
 
 class MeatCard extends React.Component {
-  // static propTypes = {
-  //   Meat: MeatShape.MeatShape,
-  //   removeMeat: PropTypes.func.isRequired,
-  // }
+  static propTypes = {
+    Meat: MeatShape.MeatShape,
+    removeMeat: PropTypes.func.isRequired,
+  }
 
   meatCardColorSort = (meatType) => {
     let domString = '';
