@@ -11,18 +11,43 @@ class MeatCard extends React.Component {
   //   removeMeat: PropTypes.func.isRequired,
   // }
 
+  meatCardColorSort = (meatType) => {
+    let domString = '';
+    switch (meatType) {
+    case 'type1':
+      domString = 'card bg-danger';
+      break;
+    case 'type2':
+      domString = 'card bg-warning';
+      break;
+    case 'type3':
+      domString = 'card bg-success';
+      break;
+    case 'type4':
+      domString = 'card bg-info';
+      break;
+    case 'type5':
+      domString = 'card bg-primary';
+      break;
+    default:
+      domString = 'card';
+    }
+    return domString;
+  }
+
   render() {
-    const { meat, removeMeat } = this.props;
+    const { meat, removeMeat, meatType } = this.props;
     const singleLink = `/Edit/${meat.id}`;
+    
     return (
       <div className="MeatCard col-3">
         <div className="card">
-          <div className="card-body">
+        <div className={this.meatCardColorSort(meat.meatTypeId)}>
             <img src={meat.photoUrl} alt="" className="card-img-top" />
             <h5 className="card-title">{meat.name}</h5>
-            <Link className="btn btn-info" to={singleLink}>edit</Link>
-            <button className="btn btn-danger" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
-            <p className="card-text">{meat.quantity}</p>
+            <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
+            <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
+            <p className="card-text">{meatType}</p>
           </div>
         </div>
       </div>

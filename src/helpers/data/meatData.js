@@ -50,6 +50,22 @@ const getAllMeats = () => new Promise((resolve, reject) => {
     .catch((err) => console.error('getAllMeats has failed to get ALL meats', err))
 });
 
+const getAllMeatTypes = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/meatTypes.json`)
+    .then((response) => {
+      const responseMeats = response.data;
+      const meatTypes = [];
+      if (responseMeats) {
+        Object.keys(responseMeats).forEach((meatTypeId) => {
+          responseMeats[meatTypeId].id = meatTypeId;
+          meatTypes.push(responseMeats[meatTypeId]);
+        })
+      }
+      resolve(meatTypes);
+    })
+    .catch((err) => reject(err))
+});
+
 const getSingleMeat = (meatId) => axios.get(`${baseUrl}/meats/${meatId}.json`);
 
 const deleteMeat = (meatId) => axios.delete(`${baseUrl}/meats/${meatId}.json`);
@@ -59,6 +75,7 @@ const postMeat = (newMeat) => axios.post(`${baseUrl}/meats.json`, newMeat);
 const updateMeat = (meatId, updatedMeat) => axios.put(`${baseUrl}/meats/${meatId}.json`, updatedMeat);
 
 export default {
+  getAllMeatTypes,
   getMeatsByUid,
   getFavMeats,
   getAllMeats,
