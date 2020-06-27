@@ -24,6 +24,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
+    raffleUid: '',
   }
 
   componentDidMount() {
@@ -36,6 +37,7 @@ class NewMeat extends React.Component {
           meatPhoto: meat.photoUrl,
           meatExpDate: meat.expDate,
           meatType: meat.meatTypeId,
+          raffleUid: meat.raffleUid,
         })
       })
       .catch((err) => console.error('could not get single meat', err))
@@ -48,6 +50,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      raffleUid,
     } = this.state;
 
     const updatedMeat = {
@@ -55,6 +58,7 @@ class NewMeat extends React.Component {
       photoUrl: meatPhoto,
       expDate: meatExpDate,
       meatTypeId: meatType,
+      raffleUid,
       uid: authData.getUid(),
     }
 
