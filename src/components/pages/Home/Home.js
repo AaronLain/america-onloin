@@ -12,6 +12,15 @@ import './Home.scss';
 class Home extends React.Component {
   state = {
     meats: [],
+    meatTypes: [],
+  }
+
+  getMeatTypes = () => {
+    meatData.getAllMeatTypes()
+      .then((meatTypes) => {
+      this.setState({ meatTypes })
+    })
+    .catch((err) => console.error('getMeatTypes not getting meatTypes', err))
   }
 
   getMeats = () => {
@@ -30,14 +39,22 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.getMeats();
+    this.getMeatTypes();
   }
 
   render() {
     const user = firebase.auth().currentUser.displayName;
-    const { meats } = this.state;
+    const { meats, meatTypes } = this.state;
+    
+    const getMeatTypeName = (meatTypeId) => {
+      const thisMeatType = meatTypes.find((meatType) => meatType.id === meatTypeId)
+      return thisMeatType.name;
+    }
+
     const buildMeatCards = meats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} removeMeat={this.removeMeat}/>
-    ))
+      <MeatCard key={meat.id} meat={meat} meatType={getMeatTypeName(meat.meatTypeId)} removeMeat={this.removeMeat} />
+    ));
+  
     return (
       <div className="container">
         <h1 className="title">Hello {user}</h1>

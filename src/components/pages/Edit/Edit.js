@@ -54,7 +54,7 @@ class NewMeat extends React.Component {
       name: meatName,
       photoUrl: meatPhoto,
       expDate: meatExpDate,
-      meatType,
+      meatTypeId: meatType,
       uid: authData.getUid(),
     }
 
