@@ -10,26 +10,42 @@ import './Favorites.scss';
 
 class Favorites extends React.Component {
   state = {
-    meats: [],
+    favMeats: [],
+    filteredMeats: [],
+    uid: authData.getUid(),
   }
 
-  getMeats = () => {
-    const uid = authData.getUid();
-    meatData.getMeatsByUid(uid)
-      .then((meats) => this.setState({ meats }))
+  getSortedMeats = () => {
+    meatData.getSortedFavMeats(this.state.uid)
+      .then((filteredMeats) => this.setState({ filteredMeats }))
+      .catch((err) => console.error(err))
+  }
+
+  removeMeat = (meatId) => {
+    meatData.deleteMeat(meatId)
+      .then(() => this.getMeats())   //after deleting, get the collection from the database
+      .catch((err) => console.error('could not remove meat', err))
+  }
+
+  getFavMeats = () => {
+    meatData.getFavMeatsByUid(this.state.uid)
+      .then((favMeats) => this.setState({ favMeats }))
       .catch((err) => console.error(err));
   }
-
+  
   componentDidMount() {
-    this.getMeats();
+    this.getFavMeats();
+    this.getSortedMeats();
   }
 
   render() {
     const user = firebase.auth().currentUser.displayName;
-    const { meats } = this.state;
-    const buildMeatCards = meats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} removeItem={this.removeItem}/>
+    const { filteredMeats } = this.state;
+
+    const buildMeatCards = filteredMeats.map((meat) => (
+      <MeatCard key={meat.id} meat={meat}  removeMeat={this.removeMeat}/>
     ));
+    
     return (
       <div className="container">
         <h1 className="title">{user}'s Favorites</h1>

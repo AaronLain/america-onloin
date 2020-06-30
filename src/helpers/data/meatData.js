@@ -18,6 +18,21 @@ const getMeatsByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/favorites.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const responseMeats = response.data;
+      const meats = [];
+      if (responseMeats) {
+        Object.keys(responseMeats).forEach((meatId) => {
+          responseMeats[meatId].id = meatId;
+          meats.push(responseMeats[meatId]);
+        });
+      }
+      resolve(meats);
+    }).catch((err) => reject(err));
+});
+
 const getFavMeats = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/favorites.json`)
     .then((response) => {
@@ -31,6 +46,25 @@ const getFavMeats = () => new Promise((resolve, reject) => {
       }
       resolve(favMeats);
     }).catch((err) => reject(err));
+});
+
+const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
+  getFavMeatsByUid(uid).then((response) => {
+    const filteredMeats = [];
+    response.forEach((fav) => {
+      if (fav) {
+        console.error(fav, 'fav')
+        const favMeat = getSingleMeat(fav.meatId);
+        filteredMeats.push(favMeat);
+        console.error(filteredMeats, 'array')
+      }
+    });
+    Promise.all(filteredMeats)
+      .then((results) => {
+        console.error(results, 'results')
+        resolve(results);
+      })
+  }).catch((err) => reject(err))
 });
 
 
@@ -75,7 +109,9 @@ const postMeat = (newMeat) => axios.post(`${baseUrl}/meats.json`, newMeat);
 const updateMeat = (meatId, updatedMeat) => axios.put(`${baseUrl}/meats/${meatId}.json`, updatedMeat);
 
 export default {
+  getSortedFavMeats,
   getAllMeatTypes,
+  getFavMeatsByUid,
   getMeatsByUid,
   getFavMeats,
   getAllMeats,

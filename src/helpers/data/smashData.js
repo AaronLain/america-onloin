@@ -1,5 +1,2 @@
-// import meatData from './meatData'
+import meatData from './meatData'
 
-// const getMeatTypeName = (meatTypeId) => {
-
-// }
