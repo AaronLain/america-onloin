@@ -7,7 +7,7 @@ import './MeatCard.scss';
 
 class MeatCard extends React.Component {
   static propTypes = {
-    // Meat: MeatShape.MeatShape,
+    Meat: MeatShape.MeatShape,
     removeMeat: PropTypes.func.isRequired,
   }
 

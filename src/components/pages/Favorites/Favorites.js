@@ -43,7 +43,7 @@ class Favorites extends React.Component {
     const { filteredMeats } = this.state;
 
     const buildMeatCards = filteredMeats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat}  removeMeat={this.removeMeat}/>
+      <MeatCard key={meat.id} meat={meat} removeMeat={this.removeMeat}/>
     ));
     
     return (
