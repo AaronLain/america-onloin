@@ -10,7 +10,6 @@ import './Favorites.scss';
 
 class Favorites extends React.Component {
   state = {
-    favMeats: [],
     filteredMeats: [],
     uid: authData.getUid(),
   }
@@ -22,19 +21,12 @@ class Favorites extends React.Component {
   }
 
   removeMeat = (meatId) => {
-    meatData.deleteMeat(meatId)
+    meatData.deleteFavMeat(meatId)
       .then(() => this.getMeats())   //after deleting, get the collection from the database
       .catch((err) => console.error('could not remove meat', err))
   }
-
-  getFavMeats = () => {
-    meatData.getFavMeatsByUid(this.state.uid)
-      .then((favMeats) => this.setState({ favMeats }))
-      .catch((err) => console.error(err));
-  }
   
   componentDidMount() {
-    this.getFavMeats();
     this.getSortedMeats();
   }
 
@@ -43,7 +35,11 @@ class Favorites extends React.Component {
     const { filteredMeats } = this.state;
 
     const buildMeatCards = filteredMeats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} removeMeat={this.removeMeat}/>
+      <MeatCard
+        key={meat.id}
+        meat={meat}
+        removeMeat={this.removeMeat}
+      />
     ));
     
     return (
