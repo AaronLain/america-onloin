@@ -61,8 +61,11 @@ const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
     });
     Promise.all(filteredMeats)
       .then((results) => {
-        console.error(results, 'results')
-        resolve(results);
+        const resultArray = [];
+        results.forEach((result) => {
+            resultArray.push(result.data)
+        })
+        resolve(resultArray)
       })
   }).catch((err) => reject(err))
 });
