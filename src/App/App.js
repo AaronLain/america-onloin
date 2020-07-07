@@ -70,10 +70,10 @@ class App extends React.Component {
                   <PrivateRoute path='/newmeat' component={NewMeat} authed={authed} />
                   <PrivateRoute path='/edit/:meatId' component={Edit} authed={authed} />
                   <PublicRoute path='/auth' component={Auth} authed={authed} />;
-                  <Redirect from="*" to="/home"/>
+                  {/* <Redirect from="*" to="/home"/> */}
                 </Switch>
               </div>
-            </div>
+              </div>
           </React.Fragment>
         </BrowserRouter>
       </div>

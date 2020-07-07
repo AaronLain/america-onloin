@@ -67,7 +67,10 @@ class TheNavBar extends React.Component {
     return (
       <div className="DatNavbar">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">America Onloin</NavbarBrand>
+          <NavbarBrand href="/">
+            <img src="https://i.ibb.co/CwKJFp5/meat2.png" width="40" height="40" className="d-inline-block align-top" alt=""/>
+            America Onloin
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             {buildTheNavBar()}

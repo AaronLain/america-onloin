@@ -1,3 +1,10 @@
-.MeatCard {
-  display: block;
+.btn {
+  margin: .4rem;
+}
+
+.card{
+  -webkit-box-shadow: -23px 38px 16px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: -23px 38px 16px 0px rgba(0,0,0,0.4);
+  box-shadow: -23px 38px 16px 0px rgba(0,0,0,0.4);
+  margin: 1rem;
 }

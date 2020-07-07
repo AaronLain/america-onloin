@@ -18,6 +18,21 @@ const getMeatsByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/favorites.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const responseMeats = response.data;
+      const meats = [];
+      if (responseMeats) {
+        Object.keys(responseMeats).forEach((meatId) => {
+          responseMeats[meatId].id = meatId;
+          meats.push(responseMeats[meatId]);
+        });
+      }
+      resolve(meats);
+    }).catch((err) => reject(err));
+});
+
 const getFavMeats = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/favorites.json`)
     .then((response) => {
@@ -31,6 +46,28 @@ const getFavMeats = () => new Promise((resolve, reject) => {
       }
       resolve(favMeats);
     }).catch((err) => reject(err));
+});
+
+const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
+  getFavMeatsByUid(uid).then((response) => {
+    const filteredMeats = [];
+    response.forEach((fav) => {
+      if (fav) {
+        const favMeat = getSingleMeat(fav.meatId);    //first we get the meats that have the id of our favorite meat
+        filteredMeats.push(favMeat);
+      }
+      console.error(filteredMeats, 'filteredMeats')
+    });
+    Promise.all(filteredMeats)   //then we must resolve all promises in array
+      .then((results) => {
+        const resultArray = [];   //now we must only display the result.data from each promise above
+        for (let i = 0, n = results.length; i < n; ++i) {   //significantly improves performace vs forEach
+            resultArray.push(results[i].data)
+        }
+        console.error(resultArray, 'resultArray')
+        resolve(resultArray)
+      })
+  }).catch((err) => reject(err))
 });
 
 
@@ -66,6 +103,8 @@ const getAllMeatTypes = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err))
 });
 
+const deleteFavMeat = (favMeatId) => console.error(favMeatId);
+  
 const getSingleMeat = (meatId) => axios.get(`${baseUrl}/meats/${meatId}.json`);
 
 const deleteMeat = (meatId) => axios.delete(`${baseUrl}/meats/${meatId}.json`);
@@ -75,12 +114,15 @@ const postMeat = (newMeat) => axios.post(`${baseUrl}/meats.json`, newMeat);
 const updateMeat = (meatId, updatedMeat) => axios.put(`${baseUrl}/meats/${meatId}.json`, updatedMeat);
 
 export default {
+  getSortedFavMeats,
   getAllMeatTypes,
+  getFavMeatsByUid,
   getMeatsByUid,
   getFavMeats,
   getAllMeats,
   getSingleMeat,
   deleteMeat,
+  deleteFavMeat,
   postMeat,
   updateMeat,
 }

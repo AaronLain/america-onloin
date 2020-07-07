@@ -10,26 +10,38 @@ import './Favorites.scss';
 
 class Favorites extends React.Component {
   state = {
-    meats: [],
+    filteredMeats: [],
+    uid: authData.getUid(),
   }
 
-  getMeats = () => {
-    const uid = authData.getUid();
-    meatData.getMeatsByUid(uid)
-      .then((meats) => this.setState({ meats }))
-      .catch((err) => console.error(err));
+  getSortedMeats = () => {
+    meatData.getSortedFavMeats(this.state.uid)
+      .then((filteredMeats) => this.setState({ filteredMeats }))
+      .catch((err) => console.error(err))
   }
 
+  removeMeat = (meatId) => {
+    meatData.deleteFavMeat(meatId)
+      .then(() => this.getMeats())   //after deleting, get the collection from the database
+      .catch((err) => console.error('could not remove meat', err))
+  }
+  
   componentDidMount() {
-    this.getMeats();
+    this.getSortedMeats();
   }
 
   render() {
     const user = firebase.auth().currentUser.displayName;
-    const { meats } = this.state;
-    const buildMeatCards = meats.map((meat) => (
-      <MeatCard key={meat.id} meat={meat} removeItem={this.removeItem}/>
+    const { filteredMeats } = this.state;
+
+    const buildMeatCards = filteredMeats.map((meat) => (
+      <MeatCard
+        key={meat.id}
+        meat={meat}
+        removeMeat={this.removeMeat}
+      />
     ));
+    
     return (
       <div className="container">
         <h1 className="title">{user}'s Favorites</h1>
