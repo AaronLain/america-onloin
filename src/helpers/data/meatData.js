@@ -54,17 +54,17 @@ const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
     response.forEach((fav) => {
       if (fav) {
         console.error(fav, 'fav')
-        const favMeat = getSingleMeat(fav.meatId);
+        const favMeat = getSingleMeat(fav.meatId);    //first we get the meats that have the id of our favorite meat
         filteredMeats.push(favMeat);
         console.error(filteredMeats, 'array')
       }
     });
-    Promise.all(filteredMeats)
+    Promise.all(filteredMeats) //then we must resolve all promises in array
       .then((results) => {
-        const resultArray = [];
-        results.forEach((result) => {
-            resultArray.push(result.data)
-        })
+        const resultArray = []; //now we must only display the result.data from each promise above
+        for (let i = 0, n = results.length; i < n; ++i) { //significantly improves performace
+            resultArray.push(results[i].data)
+        }
         resolve(resultArray)
       })
   }).catch((err) => reject(err))
