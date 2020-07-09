@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
-import MeatCard from '../../shared/MeatCard/MeatCard';
+import FavMeatCard from '../../shared/FavMeatCard/FavMeatCard';
 
 import './Favorites.scss';
 
@@ -35,9 +35,9 @@ class Favorites extends React.Component {
     const { filteredMeats } = this.state;
 
     const buildMeatCards = filteredMeats.map((meat) => (
-      <MeatCard
+      <FavMeatCard
         key={meat.id}
-        meat={meat}
+        favMeat={meat}
         removeMeat={this.removeMeat}
       />
     ));

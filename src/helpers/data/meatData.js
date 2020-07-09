@@ -94,7 +94,7 @@ const getAllMeatTypes = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err))
 });
 
-const deleteFavMeat = (favMeatId) => axios.delete(`${baseUrl}/favorites/${favMeatId}.json`);
+const deleteFavMeat = (favMeatId) => axios.patch(`${baseUrl}/favorites/${favMeatId}.json`, { "uid": "" });
   
 const getSingleMeat = (meatId) => axios.get(`${baseUrl}/meats/${meatId}.json`);
 
