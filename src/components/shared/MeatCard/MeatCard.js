@@ -1,39 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import MeatShape from '../../../helpers/propz/MeatShape';
+import authData from '../../../helpers/data/authData';
+import meatData from '../../../helpers/data/meatData';
+import cardColorSort from '../../../helpers/colorSort/MeatCardColorSort';
+import btnColorSort from '../../../helpers/colorSort/buttonColorSort';
 import './MeatCard.scss';
 
 class MeatCard extends React.Component {
-  static propTypes = {
-    Meat: MeatShape.MeatShape,
-    removeMeat: PropTypes.func.isRequired,
+  state = {
+    meatId: '',
+    uid: '',
   }
 
-  meatCardColorSort = (meatType) => {
-    let domString = '';
-    switch (meatType) {
-    case 'type1':
-      domString = 'card bg-danger';
-      break;
-    case 'type2':
-      domString = 'card bg-warning';
-      break;
-    case 'type3':
-      domString = 'card bg-success';
-      break;
-    case 'type4':
-      domString = 'card bg-info';
-      break;
-    case 'type5':
-      domString = 'card bg-primary';
-      break;
-    default:
-      domString = 'card';
+  addToFavorites = (meatId) =>  {
+     const newMeat = {
+      meatId,
+      uid: authData.getUid(),
     }
-    return domString;
+
+    meatData.addFavMeat(newMeat)
+      .then(() => this.props.history.push('/home')) //returns to home after post is complete
+      .catch((err) => console.error('could not save favorite', err));
   }
+
+  meatCardColorSort = cardColorSort.meatCardColorSort;
+  buttonColorSort = btnColorSort.buttonColorSort;
 
   render() {
     const { meat, removeMeat, meatType } = this.props;
@@ -45,6 +37,7 @@ class MeatCard extends React.Component {
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
           <div>
+            <button className={this.buttonColorSort(meat.meatTypeId)} onClick={() => this.addToFavorites(meat.id)}>Add to Favorites!</button>
             <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
             <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
           </div>

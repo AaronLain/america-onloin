@@ -2,7 +2,6 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-// import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
 import MeatCard from '../../shared/MeatCard/MeatCard';
 
@@ -18,8 +17,8 @@ class Home extends React.Component {
   getMeatTypes = () => {
     meatData.getAllMeatTypes()
       .then((meatTypes) => {
-      this.setState({ meatTypes })
-    })
+        this.setState({ meatTypes })
+      })
     .catch((err) => console.error('getMeatTypes not getting meatTypes', err))
   }
 

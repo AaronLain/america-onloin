@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // import MeatShape from '../../../helpers/propz/MeatShape';
+import colorSort from '../../../helpers/colorSort/MeatCardColorSort';
 import './FavMeatCard.scss';
+
 
 class FavMeatCard extends React.Component {
   static propTypes = {
@@ -10,29 +12,7 @@ class FavMeatCard extends React.Component {
     removeMeat: PropTypes.func.isRequired,
   }
 
-  meatCardColorSort = (meatType) => {
-    let domString = '';
-    switch (meatType) {
-    case 'type1':
-      domString = 'card bg-danger';
-      break;
-    case 'type2':
-      domString = 'card bg-warning';
-      break;
-    case 'type3':
-      domString = 'card bg-success';
-      break;
-    case 'type4':
-      domString = 'card bg-info';
-      break;
-    case 'type5':
-      domString = 'card bg-primary';
-      break;
-    default:
-      domString = 'card';
-    }
-    return domString;
-  }
+  meatCardColorSort = colorSort.meatCardColorSort;
 
   render() {
     const { favMeat, removeMeat, meatType } = this.props;

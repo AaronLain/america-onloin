@@ -17,7 +17,7 @@ class Favorites extends React.Component {
   getSortedMeats = () => {
     meatData.getSortedFavMeats(this.state.uid)
       .then((filteredMeats) => this.setState({ filteredMeats }))
-      .catch((err) => console.error(err))
+      .catch((err) => console.error('could not get fav meats', err))
   }
 
   removeMeat = (favMeatId) => {
