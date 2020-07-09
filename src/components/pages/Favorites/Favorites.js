@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
-import MeatCard from '../../shared/MeatCard/MeatCard';
+import FavMeatCard from '../../shared/FavMeatCard/FavMeatCard';
 
 import './Favorites.scss';
 
@@ -17,12 +17,12 @@ class Favorites extends React.Component {
   getSortedMeats = () => {
     meatData.getSortedFavMeats(this.state.uid)
       .then((filteredMeats) => this.setState({ filteredMeats }))
-      .catch((err) => console.error(err))
+      .catch((err) => console.error('could not get fav meats', err))
   }
 
-  removeMeat = (meatId) => {
-    meatData.deleteFavMeat(meatId)
-      .then(() => this.getMeats())   //after deleting, get the collection from the database
+  removeMeat = (favMeatId) => {
+    meatData.deleteFavMeat(favMeatId)
+      .then(() => this.getSortedMeats())   //after deleting, get the collection from the database
       .catch((err) => console.error('could not remove meat', err))
   }
   
@@ -35,9 +35,9 @@ class Favorites extends React.Component {
     const { filteredMeats } = this.state;
 
     const buildMeatCards = filteredMeats.map((meat) => (
-      <MeatCard
+      <FavMeatCard
         key={meat.id}
-        meat={meat}
+        favMeat={meat}
         removeMeat={this.removeMeat}
       />
     ));

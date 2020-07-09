@@ -65,7 +65,7 @@ class TheNavBar extends React.Component {
     };
 
     return (
-      <div className="DatNavbar">
+      <div className="TheNavbar">
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">
             <img src="https://i.ibb.co/CwKJFp5/meat2.png" width="40" height="40" className="d-inline-block align-top" alt=""/>

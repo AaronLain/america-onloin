@@ -50,23 +50,14 @@ const getFavMeats = () => new Promise((resolve, reject) => {
 
 const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
   getFavMeatsByUid(uid).then((response) => {
-    const filteredMeats = [];
-    response.forEach((fav) => {
-      if (fav) {
-        const favMeat = getSingleMeat(fav.meatId);    //first we get the meats that have the id of our favorite meat
-        filteredMeats.push(favMeat);
-      }
-      console.error(filteredMeats, 'filteredMeats')
-    });
-    Promise.all(filteredMeats)   //then we must resolve all promises in array
-      .then((results) => {
-        const resultArray = [];   //now we must only display the result.data from each promise above
-        for (let i = 0, n = results.length; i < n; ++i) {   //significantly improves performace vs forEach
-            resultArray.push(results[i].data)
-        }
-        console.error(resultArray, 'resultArray')
-        resolve(resultArray)
+    getAllMeats().then((meats) => {
+      const filteredMeats = [];
+      response.forEach((fav) => {
+        const selectedMeat = meats.find((x) => fav.meatId === x.id);
+        filteredMeats.push(selectedMeat);
       })
+      resolve(filteredMeats);
+    });
   }).catch((err) => reject(err))
 });
 
@@ -103,7 +94,9 @@ const getAllMeatTypes = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err))
 });
 
-const deleteFavMeat = (favMeatId) => console.error(favMeatId);
+const addFavMeat = (newFav) => axios.post(`${baseUrl}/favorites.json`, newFav);
+
+const deleteFavMeat = (favMeatId) => axios.patch(`${baseUrl}/favorites/${favMeatId}.json`, { "uid": "" });
   
 const getSingleMeat = (meatId) => axios.get(`${baseUrl}/meats/${meatId}.json`);
 
@@ -123,6 +116,7 @@ export default {
   getSingleMeat,
   deleteMeat,
   deleteFavMeat,
+  addFavMeat,
   postMeat,
   updateMeat,
 }
