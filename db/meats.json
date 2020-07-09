@@ -7,7 +7,8 @@
     "uid": "",
     "name": "Pastrami",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat2": {
     "expDate": "2020-6-23",
@@ -17,7 +18,8 @@
     "uid": "",
     "name": "Chicken Liver Mousse",
     "meatTypeId": "type2",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat3": {
     "expDate": "2020-6-30",
@@ -27,7 +29,8 @@
     "uid": "",
     "name": "Balogna",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat4": {
     "expDate": "2020-7-17",
@@ -37,7 +40,8 @@
     "uid": "",
     "name": "Coppa",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat5": {
     "expDate": "2020-7-18",
@@ -47,7 +51,8 @@
     "uid": "",
     "name": "Bacon",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat6": {
     "expDate": "2020-7-25",
@@ -57,7 +62,8 @@
     "uid": "",
     "name": "Frankfurter",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat7": {
     "expDate": "2020-7-3",
@@ -67,7 +73,8 @@
     "uid": "",
     "name": "Boudin Blanc",
     "meatTypeId": "type2",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats1"
   },
   "meat8": {
     "expDate": "2020-7-19",
@@ -77,7 +84,8 @@
     "uid": "",
     "name": "Merguez",
     "meatTypeId": "type4",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat9": {
     "expDate": "2020-7-15",
@@ -87,7 +95,8 @@
     "uid": "",
     "name": "Dry-Aged Porterhouse",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat10": {
     "expDate": "2020-7-15",
@@ -97,7 +106,8 @@
     "uid": "",
     "name": "Pork Porterhouse",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat11": {
     "expDate": "2020-7-23",
@@ -107,7 +117,8 @@
     "uid": "",
     "name": "Lamb Saddle Roast",
     "meatTypeId": "type4",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat12": {
     "expDate": "2020-7-16",
@@ -117,7 +128,8 @@
     "uid": "",
     "name": "Bratwurst",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat13": {
     "expDate": "2020-7-20",
@@ -127,7 +139,8 @@
     "uid": "",
     "name": "Chicken Gallantine",
     "meatTypeId": "type2",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat14": {
     "expDate": "2022-5-23",
@@ -137,7 +150,8 @@
     "uid": "",
     "name": "Jamon Iberico",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats2"
   },
   "meat15": {
     "expDate": "2021-4-12",
@@ -147,7 +161,8 @@
     "uid": "",
     "name": "Fromage de Tete Maison",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats10"
   },
   "meat16": {
     "expDate": "2020-7-8",
@@ -157,7 +172,8 @@
     "uid": "",
     "name": "Caul-Fat Burgers",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats9"
   },
   "meat17": {
     "expDate": "2021-9-24",
@@ -167,7 +183,8 @@
     "uid": "",
     "name": "Duck Prosciutto",
     "meatTypeId": "type5",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats8"
   },
   "meat18": {
     "expDate": "2020-7-11",
@@ -177,7 +194,8 @@
     "uid": "",
     "name": "Duck Confit",
     "meatTypeId": "type5",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat19": {
     "expDate": "2020-8-2",
@@ -187,7 +205,8 @@
     "uid": "",
     "name": "Corned Beef Brisket",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat20": {
     "expDate": "2020-7-16",
@@ -197,7 +216,8 @@
     "uid": "",
     "name": "Peking Duck",
     "meatTypeId": "type5",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats7"
   },
   "meat21": {
     "expDate": "2020-7-12",
@@ -207,7 +227,8 @@
     "uid": "",
     "name": "60-day Dry-Aged Cote de Boeuf",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats6"
   },
   "meat22": {
     "expDate": "2020-7-23",
@@ -217,7 +238,8 @@
     "uid": "",
     "name": "Pate en Croute",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat23": {
     "expDate": "2020-8-1",
@@ -227,7 +249,8 @@
     "uid": "",
     "name": "Sundae (Korean Blood Sausage)",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats5"
   },
   "meat24": {
     "expDate": "",
@@ -237,7 +260,8 @@
     "uid": "",
     "name": "Pig's Ear Terrine",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats4"
   },
   "meat25": {
     "expDate": "2020-8-23",
@@ -247,7 +271,8 @@
     "uid": "",
     "name": "Mortadella",
     "meatTypeId": "type3",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat26": {
     "expDate": "2020-7-20",
@@ -257,7 +282,8 @@
     "uid": "",
     "name": "Braised Chicken Feet",
     "meatTypeId": "type2",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat27": {
     "expDate": "2020-7-30",
@@ -267,7 +293,8 @@
     "uid": "",
     "name": "Silkie Chicken Wings",
     "meatTypeId": "type2",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": "favMeats3"
   },
   "meat28": {
     "expDate": "2021-3-26",
@@ -277,7 +304,8 @@
     "uid": "",
     "name": "Lamb Pancetta",
     "meatTypeId": "type4",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat29": {
     "expDate": "2020-5-21",
@@ -287,7 +315,8 @@
     "uid": "",
     "name": "Beef Wellington",
     "meatTypeId": "type1",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   },
   "meat30": {
     "expDate": "2020-4-20",
@@ -297,6 +326,7 @@
     "uid": "",
     "name": "Duck L'orange",
     "meatTypeId": "type5",
-    "isAvailable": true
+    "isAvailable": true,
+    "favoriteId": ""
   }
 }

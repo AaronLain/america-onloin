@@ -20,9 +20,9 @@ class Favorites extends React.Component {
       .catch((err) => console.error(err))
   }
 
-  removeMeat = (meatId) => {
-    meatData.deleteFavMeat(meatId)
-      .then(() => this.getMeats())   //after deleting, get the collection from the database
+  removeMeat = (favMeatId) => {
+    meatData.deleteFavMeat(favMeatId)
+      .then(() => this.getSortedMeats())   //after deleting, get the collection from the database
       .catch((err) => console.error('could not remove meat', err))
   }
   
