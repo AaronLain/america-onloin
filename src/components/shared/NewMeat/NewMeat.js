@@ -3,6 +3,9 @@ import {
   Container,
   Row,
   Col,
+  Card,
+  CardTitle,
+  CardBody,
   Button,
   Modal,
   ModalHeader,
@@ -86,8 +89,13 @@ class NewMeat extends React.Component {
       <Container>
         <Row>
           <Col>
-            {/* A cool image is going to go here maybe */}
-          <button className="btn btn-danger" onClick={this.toggle}>Add New Meat</button>
+          <Card>
+              <CardTitle><h1>Show us what you got!</h1></CardTitle>
+                <img src="https://pngimg.com/uploads/steak/steak_PNG38.png" height="100%" width="100%" alt="just some meat" />
+              <CardBody>
+                <button className="btn btn-danger" onClick={this.toggle}>Add New Meat</button>
+              </CardBody>
+            </Card>
           <Modal isOpen={modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Add Some New Meat!</ModalHeader>
             <ModalBody>

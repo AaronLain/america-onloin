@@ -62,8 +62,8 @@ class Home extends React.Component {
     return (
       <div className="container">
         <h1 className="title">Hello {user}</h1>
-        <h2 className="subtitle">Look at you go!</h2>
-        <div className="d-flex flex-wrap">
+        <h2 className="subtitle"><em>Welcome to your meats!</em></h2>
+        <div className="d-flex flex-row flex-wrap justify-content-md-around">
           {buildMeatCards}
         </div>
       </div>

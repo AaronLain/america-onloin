@@ -9,6 +9,7 @@ import './MeatCard.scss';
 
 class MeatCard extends React.Component {
   state = {
+    favorites: [],
     meatId: '',
     uid: '',
     id: '',
@@ -16,16 +17,16 @@ class MeatCard extends React.Component {
 
   addToFavorites = (meatId) => {
     const rand = Math.floor(Math.random() * 39)
-    const newMeat = {
+    const newFavMeat = {
       id: "favMeat2" + rand,
       meatId,
       uid: authData.getUid(),
     }
 
-    this.setState({ id: newMeat.id })
+    this.setState({ id: newFavMeat.id })
     
-    meatData.patchFavMeatIdToMeat(meatId, newMeat.id)
-      .then(meatData.addFavMeat(newMeat))
+    meatData.patchFavMeatIdToMeat(meatId, newFavMeat.id)
+      .then(meatData.addFavMeat(newFavMeat))
       .then(() => this.props.history.push('/home')) //returns to home after post is complete
       .catch((err) => console.error('could not save favorite', err));
   }
@@ -38,7 +39,7 @@ class MeatCard extends React.Component {
     const singleLink = `/Edit/${meat.id}`;
     
     return (
-      <div className="meatcard col-md-3 col-sm-12">
+      <div className="meatcard col-md-4 col-sm-12">
         <div className={this.meatCardColorSort(meat.meatTypeId)}> {} {/* sets the color of the card based on the TYPE of protein it is*/}
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
