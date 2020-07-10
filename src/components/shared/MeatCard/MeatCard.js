@@ -11,15 +11,21 @@ class MeatCard extends React.Component {
   state = {
     meatId: '',
     uid: '',
+    id: '',
   }
 
-  addToFavorites = (meatId) =>  {
-     const newMeat = {
+  addToFavorites = (meatId) => {
+    const rand = Math.floor(Math.random() * 39)
+    const newMeat = {
+      id: "favMeat2" + rand,
       meatId,
       uid: authData.getUid(),
     }
 
-    meatData.addFavMeat(newMeat)
+    this.setState({ id: newMeat.id })
+    
+    meatData.patchFavMeatIdToMeat(meatId, newMeat.id)
+      .then(meatData.addFavMeat(newMeat))
       .then(() => this.props.history.push('/home')) //returns to home after post is complete
       .catch((err) => console.error('could not save favorite', err));
   }

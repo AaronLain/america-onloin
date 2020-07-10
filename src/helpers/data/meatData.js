@@ -96,6 +96,8 @@ const getAllMeatTypes = () => new Promise((resolve, reject) => {
 
 const addFavMeat = (newFav) => axios.post(`${baseUrl}/favorites.json`, newFav);
 
+const patchFavMeatIdToMeat = (meatId, favMeatId) => axios.patch(`${baseUrl}/meats/${meatId}.json`, {"favoriteId": favMeatId})
+
 const deleteFavMeat = (favMeatId) => axios.delete(`${baseUrl}/favorites/${favMeatId}.json`);
   
 const getSingleMeat = (meatId) => axios.get(`${baseUrl}/meats/${meatId}.json`);
@@ -118,5 +120,6 @@ export default {
   deleteFavMeat,
   addFavMeat,
   postMeat,
+  patchFavMeatIdToMeat,
   updateMeat,
 }
