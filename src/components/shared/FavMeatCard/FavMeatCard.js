@@ -15,7 +15,6 @@ class FavMeatCard extends React.Component {
     const {
       favMeat,
       removeMeat,
-      meatType,
       description
     } = this.props;
     
