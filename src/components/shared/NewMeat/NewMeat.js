@@ -3,6 +3,9 @@ import {
   Container,
   Row,
   Col,
+  Card,
+  CardTitle,
+  CardBody,
   Button,
   Modal,
   ModalHeader,
@@ -24,7 +27,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
-    raffleUid: '',
+    description: ''
   }
 
   saveMeat = (e) => {
@@ -33,7 +36,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
-      raffleUid,
+      description,
     } = this.state;
 
     const newMeat = {
@@ -41,7 +44,7 @@ class NewMeat extends React.Component {
       photoUrl: meatPhoto,
       expDate: meatExpDate,
       meatTypeId: meatType,
-      raffleUid,
+      description,
       uid: authData.getUid(),
     }
 
@@ -65,6 +68,11 @@ class NewMeat extends React.Component {
     this.setState({ meatExpDate: e.target.value });
   }
 
+  descriptionChange = (e) => {
+    e.preventDefault();
+    this.setState({ description: e.target.value })
+  }
+
   meatTypeChange = (e) => {
     this.setState({ meatType: e.target.value }) 
   }
@@ -80,14 +88,20 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      description,
     } = this.state;
     
     return (
       <Container>
         <Row>
           <Col>
-            {/* A cool image is going to go here maybe */}
-          <button className="btn btn-danger" onClick={this.toggle}>Add New Meat</button>
+          <Card>
+              <CardTitle><h1>Show us what you got!</h1></CardTitle>
+                <img src="https://pngimg.com/uploads/steak/steak_PNG38.png" height="100%" width="100%" alt="just some meat" />
+              <CardBody>
+                <button className="btn btn-danger" onClick={this.toggle}>Add New Meat</button>
+              </CardBody>
+            </Card>
           <Modal isOpen={modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Add Some New Meat!</ModalHeader>
             <ModalBody>
@@ -111,6 +125,16 @@ class NewMeat extends React.Component {
                       placeholder="Meat pic url goes here"
                       value={meatPhoto}
                       onChange={this.photoChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                  <Label for="description">Description</Label>
+                    <Input type="text"
+                      name="description"
+                      id="description"
+                      placeholder="Description goes here"
+                      value={description}
+                      onChange={this.descriptionChange}
                     />
                 </FormGroup>
                 <FormGroup>

@@ -3,21 +3,6 @@ import firebaseConfig from '../apiKeys.json'
 
 const baseUrl = firebaseConfig.firebaseKeys.databaseURL;
 
-const getMeatsByUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/meats.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => {
-      const responseMeats = response.data;
-      const meats = [];
-      if (responseMeats) {
-        Object.keys(responseMeats).forEach((meatId) => {
-          responseMeats[meatId].id = meatId;
-          meats.push(responseMeats[meatId]);
-        });
-      }
-      resolve(meats);
-    }).catch((err) => reject(err));
-});
-
 const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/favorites.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
@@ -33,27 +18,12 @@ const getFavMeatsByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const getFavMeats = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/favorites.json`)
-    .then((response) => {
-      const responseMeats = response.data;
-      const favMeats = [];
-      if (responseMeats) {
-        Object.keys(responseMeats).forEach((meatId) => {
-          responseMeats[meatId].id = meatId;
-          favMeats.push(responseMeats[meatId]);
-        });
-      }
-      resolve(favMeats);
-    }).catch((err) => reject(err));
-});
-
 const getSortedFavMeats = (uid) => new Promise((resolve, reject) => {
   getFavMeatsByUid(uid).then((response) => {
     getAllMeats().then((meats) => {
       const filteredMeats = [];
       response.forEach((fav) => {
-        const selectedMeat = meats.find((x) => fav.meatId === x.id);
+        const selectedMeat = meats.find((meat) => fav.meatId === meat.id);
         filteredMeats.push(selectedMeat);
       })
       resolve(filteredMeats);
@@ -94,7 +64,7 @@ const getAllMeatTypes = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err))
 });
 
-const addFavMeat = (newFav) => axios.post(`${baseUrl}/favorites.json`, newFav);
+const patchFavMeatIdToMeat = (meatId, favMeatId) => axios.patch(`${baseUrl}/meats/${meatId}.json`, {"favoriteId": favMeatId})
 
 const deleteFavMeat = (favMeatId) => axios.delete(`${baseUrl}/favorites/${favMeatId}.json`);
   
@@ -109,14 +79,11 @@ const updateMeat = (meatId, updatedMeat) => axios.put(`${baseUrl}/meats/${meatId
 export default {
   getSortedFavMeats,
   getAllMeatTypes,
-  getFavMeatsByUid,
-  getMeatsByUid,
-  getFavMeats,
   getAllMeats,
   getSingleMeat,
   deleteMeat,
   deleteFavMeat,
-  addFavMeat,
   postMeat,
+  patchFavMeatIdToMeat,
   updateMeat,
 }

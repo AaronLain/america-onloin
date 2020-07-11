@@ -3,6 +3,9 @@ import {
   Container,
   Row,
   Col,
+  Card,
+  CardTitle,
+  CardBody,
   Button,
   Modal,
   ModalHeader,
@@ -24,7 +27,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
-    raffleUid: '',
+    description: '',
   }
 
   componentDidMount() {
@@ -37,7 +40,7 @@ class NewMeat extends React.Component {
           meatPhoto: meat.photoUrl,
           meatExpDate: meat.expDate,
           meatType: meat.meatTypeId,
-          raffleUid: meat.raffleUid,
+          description: meat.description,
         })
       })
       .catch((err) => console.error('could not get single meat', err))
@@ -50,7 +53,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
-      raffleUid,
+      description,
     } = this.state;
 
     const updatedMeat = {
@@ -58,7 +61,7 @@ class NewMeat extends React.Component {
       photoUrl: meatPhoto,
       expDate: meatExpDate,
       meatTypeId: meatType,
-      raffleUid,
+      description,
       uid: authData.getUid(),
     }
 
@@ -75,6 +78,11 @@ class NewMeat extends React.Component {
   photoChange = (e) => {
     e.preventDefault();
     this.setState({ meatPhoto: e.target.value });
+  }
+
+  descriptionChange = (e) => {
+    e.preventDefault();
+    this.setState({ description: e.target.value })
   }
 
   expDateChange = (e) => {
@@ -97,14 +105,20 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      description,
     } = this.state;
     
     return (
       <Container>
         <Row>
           <Col>
-            {/* A cool image is going to go here maybe */}
-          <button className="btn btn-danger" onClick={this.toggle}>Edit That Meat!</button>
+            <Card>
+              <CardTitle><h1>{meatName}</h1></CardTitle>
+              <img src={meatPhoto} height="100%" width="100%" alt="just some meat" />
+              <CardBody>
+                  <button className="btn btn-danger" onClick={this.toggle}>Edit That Meat!</button>
+              </CardBody>
+            </Card>
           <Modal isOpen={modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Edit Some Meat!</ModalHeader>
             <ModalBody>
@@ -128,6 +142,16 @@ class NewMeat extends React.Component {
                       placeholder="Meat pic url goes here"
                       value={meatPhoto}
                       onChange={this.photoChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                  <Label for="description">Description</Label>
+                    <Input type="text"
+                      name="description"
+                      id="description"
+                      placeholder="Description goes here"
+                      value={description}
+                      onChange={this.descriptionChange}
                     />
                 </FormGroup>
                 <FormGroup>

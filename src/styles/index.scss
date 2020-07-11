@@ -1,9 +1,13 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,700;1,700&display=swap');
 @import 'variables';
 
 
 body {
-  background-color: $favColor;
+  background-image: url("https://i.ibb.co/DRWnfnd/bio-background.jpg");
+}
+
+h1 {
+  font-family: 'Fira Sans', sans-serif;
 }
