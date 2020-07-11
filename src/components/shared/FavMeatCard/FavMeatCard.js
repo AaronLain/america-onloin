@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import MeatShape from '../../../helpers/propz/MeatShape';
 import colorSort from '../../../helpers/colorSort/MeatCardColorSort';
 import './FavMeatCard.scss';
 
-
 class FavMeatCard extends React.Component {
   static propTypes = {
-    // Meat: MeatShape.MeatShape,
     removeMeat: PropTypes.func.isRequired,
   }
 
@@ -23,7 +20,10 @@ class FavMeatCard extends React.Component {
           <img src={favMeat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{favMeat.name}</h5>
           <div>
-            <button className="btn btn-dark btn-sm" onClick={() => removeMeat(favMeat.favoriteId)}>Remove from Favorites</button>
+            <button className="btn btn-dark btn-sm"
+              onClick={() => removeMeat(favMeat.favoriteId)}>
+              Remove from Favorites
+              </button>
           </div>
           <p className="card-text">{meatType}</p>
         </div>

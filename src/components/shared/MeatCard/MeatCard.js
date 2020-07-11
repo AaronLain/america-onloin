@@ -16,18 +16,18 @@ class MeatCard extends React.Component {
   }
 
   addToFavorites = (meatId) => {
-    const rand = Math.floor(Math.random() * 39)
+    const rand = Math.floor(Math.random() * 3912)
     const newFavMeat = {
       id: "favMeat2" + rand,
       meatId,
       uid: authData.getUid(),
     }
 
-    this.setState({ id: newFavMeat.id })
+    this.setState({ id: newFavMeat.key })
     
-    meatData.patchFavMeatIdToMeat(meatId, newFavMeat.id)
+    meatData.patchFavMeatIdToMeat(meatId, newFavMeat.id)  //add the new favMeatId to the meat 
       .then(meatData.addFavMeat(newFavMeat))
-      .then(() => this.props.history.push('/home')) //returns to home after post is complete
+      .then(() => this.props.history.push('/home'))   //returns to home after post is complete
       .catch((err) => console.error('could not save favorite', err));
   }
 
@@ -44,7 +44,11 @@ class MeatCard extends React.Component {
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
           <div>
-            <button className={this.buttonColorSort(meat.meatTypeId)} onClick={() => this.addToFavorites(meat.id)}>Add to Favorites!</button>
+            <button
+              className={this.buttonColorSort(meat.meatTypeId)}
+              onClick={() => this.addToFavorites(meat.id)}>
+              Add to Favorites!
+            </button>
             <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
             <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
           </div>
