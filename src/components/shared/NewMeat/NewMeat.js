@@ -27,7 +27,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
-    raffleUid: '',
+    description: ''
   }
 
   saveMeat = (e) => {
@@ -36,7 +36,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
-      raffleUid,
+      description,
     } = this.state;
 
     const newMeat = {
@@ -44,7 +44,7 @@ class NewMeat extends React.Component {
       photoUrl: meatPhoto,
       expDate: meatExpDate,
       meatTypeId: meatType,
-      raffleUid,
+      description,
       uid: authData.getUid(),
     }
 
@@ -68,6 +68,11 @@ class NewMeat extends React.Component {
     this.setState({ meatExpDate: e.target.value });
   }
 
+  descriptionChange = (e) => {
+    e.preventDefault();
+    this.setState({ description: e.target.value })
+  }
+
   meatTypeChange = (e) => {
     this.setState({ meatType: e.target.value }) 
   }
@@ -83,6 +88,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      description,
     } = this.state;
     
     return (
@@ -119,6 +125,16 @@ class NewMeat extends React.Component {
                       placeholder="Meat pic url goes here"
                       value={meatPhoto}
                       onChange={this.photoChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                  <Label for="description">Description</Label>
+                    <Input type="text"
+                      name="description"
+                      id="description"
+                      placeholder="Description goes here"
+                      value={description}
+                      onChange={this.descriptionChange}
                     />
                 </FormGroup>
                 <FormGroup>

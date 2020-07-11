@@ -22,7 +22,7 @@ class MeatCard extends React.Component {
     const db = firebase.database();
     const favMeatId = 'favMeat' + rand;
     
-    db.ref('favorites/' + favMeatId).set({
+    db.ref('favorites/' + favMeatId).set({ //creates custom id for the new FavMeat to be used for deletion purposes
       meatId,
       uid: authData.getUid(),
     })
@@ -34,7 +34,13 @@ class MeatCard extends React.Component {
   buttonColorSort = btnColorSort.buttonColorSort;
 
   render() {
-    const { meat, removeMeat, meatType } = this.props;
+    const {
+      meat,
+      removeMeat,
+      meatType,
+      description
+    } = this.props;
+
     const singleLink = `/Edit/${meat.id}`;
     
     return (
@@ -43,6 +49,7 @@ class MeatCard extends React.Component {
           <img src={meat.photoUrl} alt="" className="card-img-top" />
           <h5 className="card-title">{meat.name}</h5>
           <div>
+            <p className="card-text"><em>{description}</em></p>
             <button
               className={this.buttonColorSort(meat.meatTypeId)}
               onClick={() => this.addToFavorites(meat.id)}>
@@ -51,7 +58,7 @@ class MeatCard extends React.Component {
             <Link className="btn btn-light btn-sm" to={singleLink}>Edit the meat!</Link>
             <button className="btn btn-dark btn-sm" onClick={() => removeMeat(meat.id)}>Delete the meat!</button>
           </div>
-          <p className="card-text">{meatType}</p>
+          <p className="card-text"><strong>{meatType}</strong></p>
         </div>
       </div>
     );

@@ -38,6 +38,7 @@ class Favorites extends React.Component {
       <FavMeatCard
         key={meat.id}
         favMeat={meat}
+        description={meat.description}
         removeMeat={this.removeMeat}
       />
     ));

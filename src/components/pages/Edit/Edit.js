@@ -27,7 +27,7 @@ class NewMeat extends React.Component {
     meatPhoto: '',
     meatExpDate: '',
     meatType: '',
-    raffleUid: '',
+    description: '',
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class NewMeat extends React.Component {
           meatPhoto: meat.photoUrl,
           meatExpDate: meat.expDate,
           meatType: meat.meatTypeId,
-          raffleUid: meat.raffleUid,
+          description: meat.description,
         })
       })
       .catch((err) => console.error('could not get single meat', err))
@@ -53,7 +53,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
-      raffleUid,
+      description,
     } = this.state;
 
     const updatedMeat = {
@@ -61,7 +61,7 @@ class NewMeat extends React.Component {
       photoUrl: meatPhoto,
       expDate: meatExpDate,
       meatTypeId: meatType,
-      raffleUid,
+      description,
       uid: authData.getUid(),
     }
 
@@ -78,6 +78,11 @@ class NewMeat extends React.Component {
   photoChange = (e) => {
     e.preventDefault();
     this.setState({ meatPhoto: e.target.value });
+  }
+
+  descriptionChange = (e) => {
+    e.preventDefault();
+    this.setState({ description: e.target.value })
   }
 
   expDateChange = (e) => {
@@ -100,6 +105,7 @@ class NewMeat extends React.Component {
       meatPhoto,
       meatExpDate,
       meatType,
+      description,
     } = this.state;
     
     return (
@@ -136,6 +142,16 @@ class NewMeat extends React.Component {
                       placeholder="Meat pic url goes here"
                       value={meatPhoto}
                       onChange={this.photoChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                  <Label for="description">Description</Label>
+                    <Input type="text"
+                      name="description"
+                      id="description"
+                      placeholder="Description goes here"
+                      value={description}
+                      onChange={this.descriptionChange}
                     />
                 </FormGroup>
                 <FormGroup>

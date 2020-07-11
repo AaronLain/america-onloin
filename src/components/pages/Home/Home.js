@@ -55,6 +55,7 @@ class Home extends React.Component {
         key={meat.id}
         meat={meat}
         meatType={getMeatTypeName(meat.meatTypeId)}
+        description={meat.description}
         removeMeat={this.removeMeat}
       />
     ));
