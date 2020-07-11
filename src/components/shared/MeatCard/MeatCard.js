@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/app'
+import 'firebase/database';
 
 import authData from '../../../helpers/data/authData';
 import meatData from '../../../helpers/data/meatData';
@@ -17,18 +19,15 @@ class MeatCard extends React.Component {
 
   addToFavorites = (meatId) => {
     const rand = Math.floor(Math.random() * 3912)
-    const newFavMeat = {
-      id: "favMeat2" + rand,
+    const db = firebase.database();
+    const favMeatId = 'favMeat' + rand;
+    
+    db.ref('favorites/' + favMeatId).set({
       meatId,
       uid: authData.getUid(),
-    }
-
-    this.setState({ id: newFavMeat.key })
-    
-    meatData.patchFavMeatIdToMeat(meatId, newFavMeat.id)  //add the new favMeatId to the meat 
-      .then(meatData.addFavMeat(newFavMeat))
-      .then(() => this.props.history.push('/home'))   //returns to home after post is complete
-      .catch((err) => console.error('could not save favorite', err));
+    })
+  
+    meatData.patchFavMeatIdToMeat(meatId, favMeatId)  //add the new favMeatId to the meat
   }
 
   meatCardColorSort = cardColorSort.meatCardColorSort;
